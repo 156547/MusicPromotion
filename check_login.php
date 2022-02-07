@@ -14,10 +14,9 @@ $password=$_POST['password'];
 
 try{
     // CHECK USERNAME AND PASS EXIST IN DATABASE
-    $sql_statement = $db->prepare("SELECT * FROM `tblUsers` WHERE `username` = :username AND `password` =:password");
-    $sql_statement->execute(array('username' => $username, 'password' => $password));    
-    $row = $sql_statement->fetch(PDO::FETCH_ASSOC);
-
+    $query = $db->prepare("SELECT * FROM `tblUsers` WHERE `username` = :username AND `password` =:password");
+    $query->execute(array('username' => $username, 'password' => $password));    
+    $row = $query->fetch(PDO::FETCH_ASSOC);
     if($row){
         echo 'succesful';
     }
